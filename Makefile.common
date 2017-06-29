@@ -36,7 +36,7 @@ LIBDIR=$(TOP)/libs
 STMLIB=$(LIBDIR)/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries
 #Adjust TypeOfMCU in use, see CMSIS file "stm32f4xx.h"
 #STM32F103RBT (128KB FLASH, 20KB RAM) --> STM32F10X_MD 
-TypeOfMCU=STM32F40XX
+TypeOfMCU=STM32F40_41xxx
 #STM32F103RET (512KB FLASH, 64KB RAM) --> STM32F10X_HD
 #TypeOfMCU=STM32F10X_HD
 TC=arm-none-eabi
@@ -47,8 +47,8 @@ AR=$(TC)-ar
 GDB=$(TC)-gdb
 INCLUDE=-I$(TOP)/inc
 INCLUDE+=-I$(STMLIB)/CMSIS/Include
-INCLUDE+=-I$(STMLIB)/CMSIS/Device/ST/STM32F40XX/Include
-INCLUDE+=-I$(STMLIB)/CMSIS/Device/ST/STM32F40XX/Source/Templates
+INCLUDE+=-I$(STMLIB)/CMSIS/Device/ST/STM32F4xx/Include
+INCLUDE+=-I$(STMLIB)/CMSIS/Device/ST/STM32F4xx/Source/Templates
 INCLUDE+=-I$(STMLIB)/STM32F4xx_StdPeriph_Driver/inc
 #INCLUDE+=-I$(STMLIB)/STM32_USB-FS-Device_Driver/inc
 COMMONFLAGS=-g -mcpu=cortex-m4 -mthumb
