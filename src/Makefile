@@ -9,7 +9,6 @@ OBJS+=led.o
 OBJS+=sys.o
 OBJS+=usart.o
 
-
 all: src
 
 src: app.a
