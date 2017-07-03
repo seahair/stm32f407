@@ -1,5 +1,5 @@
 # include Makefile
-# guolinxin add for test
+# guolinxin add for test branch feat
 #This file is included in the general Makefile, the libs Makefile and the src Makefile 
 #Different optimize settings for library and source files can be realized by using arguments 
 #Compiler optimize settings: 
