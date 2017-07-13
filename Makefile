@@ -40,4 +40,5 @@ tshow:
 	@echo "######## optimize settings: $(InfoTextLib), $(InfoTextSrc)" 
 	@echo "######################################################################################################"
 
-#flash:
+flash: all
+	./do_flash.pl $(TOP)/main.bin

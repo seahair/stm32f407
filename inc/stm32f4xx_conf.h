@@ -91,6 +91,7 @@
 #endif /* STM32F411xE */
 
 
+
 /* Exported types ------------------------------------------------------------*/
 #define __PRINTG__  		//¿ªÆô printg Êä³ö
   
@@ -101,6 +102,7 @@
 #else  
 #define printg(format,...)  
 #endif 
+/* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 
 /* If an external clock source is used, then the value of the following define 

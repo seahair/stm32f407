@@ -18,10 +18,15 @@
 
 
 //THUMB指令不支持汇编内联
+<<<<<<< HEAD
 //采用如下方法实现执行汇编指令WFI
 
 /// Beck add and change
 /* __asm void WFI_SET(void)
+=======
+//采用如下方法实现执行汇编指令WFI  
+__asm void WFI_SET(void)
+>>>>>>> 245da31fe437989c7ea594341897923a7e395c0a
 {
 	WFI;		  
 }
@@ -43,6 +48,7 @@ __asm void MSR_MSP(u32 addr)
 {
 	MSR MSP, r0 			//set Main Stack value
 	BX r14
+<<<<<<< HEAD
 } */
 
 
@@ -68,6 +74,12 @@ void MSR_MSP(u32 addr)
 	asm("MSR MSP, r0");
 	asm("BX r14");
 }
+=======
+}
+
+
+
+>>>>>>> 245da31fe437989c7ea594341897923a7e395c0a
 
 
 

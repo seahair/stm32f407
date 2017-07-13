@@ -34,6 +34,7 @@
 
 //////////////////////////////////////////////////////////////////
 //加入以下代码,支持printf函数,而不需要选择use MicroLIB	  
+<<<<<<< HEAD
 #if defined ( __ICCARM__ )
 int fputc( int ch, FILE *f )
 {
@@ -45,6 +46,10 @@ int fputc( int ch, FILE *f )
 #else
 	
 //#pragma import(__use_no_semihosting)             
+=======
+#if 1
+#pragma import(__use_no_semihosting)             
+>>>>>>> 245da31fe437989c7ea594341897923a7e395c0a
 //标准库需要的支持函数                 
 struct __FILE 
 { 
@@ -53,7 +58,11 @@ struct __FILE
 
 FILE __stdout;       
 //定义_sys_exit()以避免使用半主机模式    
+<<<<<<< HEAD
 void _sys_exit(int x) 
+=======
+_sys_exit(int x) 
+>>>>>>> 245da31fe437989c7ea594341897923a7e395c0a
 { 
 	x = x; 
 } 

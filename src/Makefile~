@@ -5,6 +5,16 @@ include ../Makefile.common
 OBJS+=startup.o
 OBJS+=main.o
 
+<<<<<<< HEAD
+all: src
+
+src: app.a
+
+app.a: $(OBJS)
+	$(AR) cr app.a $(OBJS)
+
+.PHONY: src clean tshow
+=======
 all:src
 
 src:app.a
@@ -13,6 +23,7 @@ app.a:$(OBJS)
 	$(AR) cr app.a $(OBJS)
 
 .PHONY:src clean tshow
+>>>>>>> c5646828349d30620b2225114e963011602d85f0
 
 clean:
 	rm -f app.a $(OBJS)
