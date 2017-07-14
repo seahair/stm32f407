@@ -1,114 +1,144 @@
-#include "stm32f4xx.h"
-#include "usart.h"
-#include "delay.h"
+/************************************************************************************************************
 
-//ALIENTEK ÃΩÀ˜’ﬂSTM32F407ø™∑¢∞Â  µ—È0
-//STM32F4π§≥Ãƒ£∞Â-ø‚∫Ø ˝∞Ê±æ
-//ºº ı÷ß≥÷£∫www.openedv.com
-//Ã‘±¶µÍ∆Ã£∫http://eboard.taobao.com
+ * Test-program for Olimex ‚ÄúSTM32-H103‚Äù, header board for ‚ÄúSTM32F103RBT6‚Äù.
 
-//π„÷› ––«“ÌµÁ◊”ø∆ºº”–œﬁπ´Àæ  
-//◊˜’ﬂ£∫’˝µ„‘≠◊” @ALIENTEK
+ * After program start green LED (STAT) will blink, when jumper LED_E is closed.
 
-int main(void)
-{
-	u32 t=0;
-	uart_init(115200);
-	delay_init(84);
-	
-  while(1){
-    printg("t:%d\r\n",t);
-		delay_ms(1000);
-		t++;
-	}
-}
+ *
 
+ * Running Release code will set ReadOutProtection (see down) via function FLASH_ReadOutProtection_Enable().
 
-/*
-// ÷≤·÷–Ω≤Ω‚µΩ≤Ω÷Ë15µƒ ±∫Úµƒmain.c‘¥¬Î»Áœ¬£∫
+ * Do not run Release code until you know how to set back ReadOutProtection!
+
+ ************************************************************************************************************/
+
 #include "stm32f4xx.h"
 
-//ALIENTEK ÃΩÀ˜’ﬂSTM32F407ø™∑¢∞Â  µ—È0
-//STM32F4π§≥Ãƒ£∞Â-ø‚∫Ø ˝∞Ê±æ
-//ºº ı÷ß≥÷£∫www.openedv.com
-//Ã‘±¶µÍ∆Ã£∫http://eboard.taobao.com
-//π„÷› ––«“ÌµÁ◊”ø∆ºº”–œﬁπ´Àæ  
-//◊˜’ﬂ£∫’˝µ„‘≠◊” @ALIENTEK
-  
-void Delay(__IO uint32_t nCount);
+#include "stm32f4xx_rcc.h"
 
-void Delay(__IO uint32_t nCount)
+#include "stm32f4xx_gpio.h"
+
+#include "stm32f4xx_flash.h"
+
+void FLASH_ReadOutProtection_Enable(void);
+
+void DelayByDiv(void);
+
+int main(int argc, char *argv[])
+
 {
-  while(nCount--){}
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);//√ä¬π√Ñ√úGPIOF√ä¬±√ñ√ì
+
+
+
+	//GPIOF9,F10¬≥√µ√ä≈í¬ª¬Ø√â√®√ñ√É
+
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;//LED0¬∫√çLED1¬∂√î√ì≈†IO¬ø√ö
+
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//√Ü√ï√ç≈°√ä√§¬≥√∂√Ñ¬£√ä≈ì
+
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//√ç√Ü√ç√¨√ä√§¬≥√∂
+
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//√â√è√Ä¬≠
+
+	GPIO_Init(GPIOF, &GPIO_InitStructure);//¬≥√µ√ä≈í¬ª¬ØGPIO
+
+	
+	GPIO_SetBits(GPIOF,GPIO_Pin_9 | GPIO_Pin_10);//GPIOF9,F10√â√®√ñ√É≈æ√ü¬£¬¨¬µ√Ü√É√∞
+
+
+	
+//	FLASH_ReadOutProtection_Enable(); // enable ReadOutProtection when running Release code
+
+	while(1)
+
+	{
+
+
+	GPIO_ResetBits(GPIOF,GPIO_Pin_9);  //LED0¬∂√î√ì≈†√í√Ω≈ì√ÖGPIOF.9√Ä¬≠¬µ√ç¬£¬¨√Å√Å  ¬µ√à√ç¬¨LED0=0;
+
+	GPIO_SetBits(GPIOF,GPIO_Pin_10);   //LED1¬∂√î√ì≈†√í√Ω≈ì√ÖGPIOF.10√Ä¬≠≈æ√ü¬£¬¨√É√∞ ¬µ√à√ç¬¨LED1=1;
+
+
+	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
+
+	GPIO_SetBits(GPIOF,GPIO_Pin_9);	   //LED0¬∂√î√ì≈†√í√Ω≈ì√ÖGPIOF.0√Ä¬≠≈æ√ü¬£¬¨√É√∞  ¬µ√à√ç¬¨LED0=1;
+
+	GPIO_ResetBits(GPIOF,GPIO_Pin_10); //LED1¬∂√î√ì≈†√í√Ω≈ì√ÖGPIOF.10√Ä¬≠¬µ√ç¬£¬¨√Å√Å ¬µ√à√ç¬¨LED1=0;
+
+
+	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
+
+
+	}
+
 }
 
-int main(void)
+/*void FLASH_ReadOutProtection_Enable(void)
+
+// If FLASH readout protection not already set, enable protection and reset device
+
+//
+
+// NOTES: The user area of the Flash memory can be protected against read by untrusted code.
+
+// Protection is enabled only for firmware compiled with flag RELEASE_PUBLIC set (see makefile).
+
+// When readout protection is set debugging via JTAG is not possible any more.
+
+// If the read protection is set while the debugger is still connected through JTAG/SWD, apply a
+
+// POR (power-on reset) instead of a system reset (without debugger connection).
+
 {
 
-  GPIO_InitTypeDef  GPIO_InitStructure;
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+	if (FLASH_GetReadOutProtectionStatus() != SET)
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  GPIO_Init(GPIOF, &GPIO_InitStructure);
+	{
 
-  while(1){
-		GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
-		Delay(0x7FFFFF);
-		GPIO_ResetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
-		Delay(0x7FFFFF);
-	
+#ifdef RELEASE_PUBLIC // HINT: define is done via makefile
+
+		FLASH_Unlock();
+
+		if (FLASH_ReadOutProtection(ENABLE) != FLASH_COMPLETE) // set readout protection
+
+		{
+
+// ERROR: could not program read protection
+
+		}
+
+		else
+
+			NVIC_SystemReset(); // protection set --> reset device to enable protection
+
+#else
+
+// output warning message
+
+#endif
+
 	}
+
 }
 */
+void DelayByDiv(void)
 
+// delay implemented by floating division
 
-/**
-*******************œ¬√Ê◊¢ ÕµÙµƒ¥˙¬Î «Õ®π˝ Œª¥¯ ≤Ÿ◊˜ µœ÷IOø⁄øÿ÷∆**************************************
-	
-int main(void)
-{ 
- 
-	delay_init(168);		  //≥ı ºªØ—” ±∫Ø ˝
-	LED_Init();		        //≥ı ºªØLED∂Àø⁄
-  while(1)
-	{
-     LED0=0;			  //LED0¡¡
-	   LED1=1;				//LED1√
-		 delay_ms(500);
-		 LED0=1;				//LED0√
-		 LED1=0;				//LED1¡¡
-		 delay_ms(500);
-	 }
+// not much compiler optimizer settings dependent
+
+{
+
+	float x=50.0f;
+
+	while (x > 0.0001f)
+
+		x = x/1.0001f; // delay loop
+
 }
-**************************************************************************************************
- **/	
-	
-/**
-*******************œ¬√Ê◊¢ ÕµÙµƒ¥˙¬Î «Õ®π˝ ÷±Ω”≤Ÿ◊˜ºƒ¥Ê∆˜ ∑Ω Ω µœ÷IOø⁄øÿ÷∆**************************************
-int main(void)
-{ 
- 
-	delay_init(168);		  //≥ı ºªØ—” ±∫Ø ˝
-	LED_Init();		        //≥ı ºªØLED∂Àø⁄
-	while(1)
-	{
-     GPIOF->BSRRH=GPIO_Pin_9;//LED0¡¡
-	   GPIOF->BSRRL=GPIO_Pin_10;//LED1√
-		 delay_ms(500);
-     GPIOF->BSRRL=GPIO_Pin_9;//LED0√
-	   GPIOF->BSRRH=GPIO_Pin_10;//LED1¡¡
-		 delay_ms(500);
-
-	 }
- }	 
-**************************************************************************************************
-**/	
- 
-
-
-
-
