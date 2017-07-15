@@ -69,7 +69,7 @@ SECTIONS
 
     KEEP (*(.init))
     KEEP (*(.fini))
-    _isr_vectors_offs = . - 0x08000000;
+/*    _isr_vectors_offs = . - 0x08000000; */
     . = ALIGN(4);
     _etext = .;        /* define a global symbols at end of code */
   } >FLASH

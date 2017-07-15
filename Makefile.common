@@ -42,6 +42,7 @@ TypeOfMCU=STM32F40_41xxx
 TC=arm-none-eabi
 CC=$(TC)-gcc
 LD=$(TC)-ld -v
+AS=$(TC)-as
 OBJCOPY=$(TC)-objcopy
 AR=$(TC)-ar
 GDB=$(TC)-gdb
