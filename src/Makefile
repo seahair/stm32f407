@@ -18,8 +18,11 @@ all: src
 
 src: app.a
 
-app.a: $(OBJS)
+app.a: $(OBJS) startup.o
 	$(AR) cr app.a $(OBJS)
+
+#startup.o: startup.S
+#	$(AS) -o startup.o startup.S
 
 .PHONY: src clean tshow
 
