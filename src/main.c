@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	GPIO_InitTypeDef GPIO_InitStructure;
 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);//Ê¹ÄÜGPIOFÊ±ÖÓ
-
+	
 
 
 	//GPIOF9,F10³õÊŒ»¯ÉèÖÃ
@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
 
 
 	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
+	
 
 	GPIO_SetBits(GPIOF,GPIO_Pin_9);	   //LED0¶ÔÓŠÒýœÅGPIOF.0À­žß£¬Ãð  µÈÍ¬LED0=1;
 
@@ -73,7 +74,7 @@ int main(int argc, char *argv[])
 
 
 	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
-
+	DelayByDiv();
 
 	}
 

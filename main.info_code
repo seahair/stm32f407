@@ -74,7 +74,7 @@ void Default_Reset_Handler(void)
  800016c:	f000 bf50 	b.w	8001010 <main>
  8000170:	20000000 	.word	0x20000000
  8000174:	20000024 	.word	0x20000024
- 8000178:	080010b0 	.word	0x080010b0
+ 8000178:	080010c4 	.word	0x080010c4
  800017c:	20000424 	.word	0x20000424
  8000180:	20000424 	.word	0x20000424
 
@@ -3502,7 +3502,7 @@ int main(int argc, char *argv[])
 
 	GPIO_Init(GPIOF, &GPIO_InitStructure);//³õÊŒ»¯GPIO
  8001024:	4669      	mov	r1, sp
- 8001026:	481e      	ldr	r0, [pc, #120]	; (80010a0 <main+0x90>)
+ 8001026:	4823      	ldr	r0, [pc, #140]	; (80010b4 <main+0xa4>)
 
 
 
@@ -3548,7 +3548,7 @@ int main(int argc, char *argv[])
 	
 	GPIO_SetBits(GPIOF,GPIO_Pin_9 | GPIO_Pin_10);//GPIOF9,F10ÉèÖÃžß£¬µÆÃð
  8001040:	4621      	mov	r1, r4
- 8001042:	4817      	ldr	r0, [pc, #92]	; (80010a0 <main+0x90>)
+ 8001042:	481c      	ldr	r0, [pc, #112]	; (80010b4 <main+0xa4>)
  8001044:	f7ff fa94 	bl	8000570 <GPIO_SetBits>
 	while(1)
 
@@ -3557,14 +3557,14 @@ int main(int argc, char *argv[])
 
 	GPIO_ResetBits(GPIOF,GPIO_Pin_9);  //LED0¶ÔÓŠÒýœÅGPIOF.9À­µÍ£¬ÁÁ  µÈÍ¬LED0=0;
  8001048:	f44f 7100 	mov.w	r1, #512	; 0x200
- 800104c:	4814      	ldr	r0, [pc, #80]	; (80010a0 <main+0x90>)
+ 800104c:	4819      	ldr	r0, [pc, #100]	; (80010b4 <main+0xa4>)
 
 // not much compiler optimizer settings dependent
 
 {
 
 	float x=50.0f;
- 800104e:	4c15      	ldr	r4, [pc, #84]	; (80010a4 <main+0x94>)
+ 800104e:	4c1a      	ldr	r4, [pc, #104]	; (80010b8 <main+0xa8>)
 	while(1)
 
 	{
@@ -3575,7 +3575,7 @@ int main(int argc, char *argv[])
 
 	GPIO_SetBits(GPIOF,GPIO_Pin_10);   //LED1¶ÔÓŠÒýœÅGPIOF.10À­žß£¬Ãð µÈÍ¬LED1=1;
  8001054:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 8001058:	4811      	ldr	r0, [pc, #68]	; (80010a0 <main+0x90>)
+ 8001058:	4816      	ldr	r0, [pc, #88]	; (80010b4 <main+0xa4>)
  800105a:	f7ff fa89 	bl	8000570 <GPIO_SetBits>
 
 	float x=50.0f;
@@ -3584,7 +3584,7 @@ int main(int argc, char *argv[])
 
 		x = x/1.0001f; // delay loop
  800105e:	4620      	mov	r0, r4
- 8001060:	4911      	ldr	r1, [pc, #68]	; (80010a8 <main+0x98>)
+ 8001060:	4916      	ldr	r1, [pc, #88]	; (80010bc <main+0xac>)
  8001062:	f7ff fe29 	bl	8000cb8 <__aeabi_fdiv>
 
 {
@@ -3592,7 +3592,7 @@ int main(int argc, char *argv[])
 	float x=50.0f;
 
 	while (x > 0.0001f)
- 8001066:	4911      	ldr	r1, [pc, #68]	; (80010ac <main+0x9c>)
+ 8001066:	4916      	ldr	r1, [pc, #88]	; (80010c0 <main+0xb0>)
 
 		x = x/1.0001f; // delay loop
  8001068:	4604      	mov	r4, r0
@@ -3605,32 +3605,32 @@ int main(int argc, char *argv[])
  800106a:	f7ff ff2d 	bl	8000ec8 <__aeabi_fcmpgt>
  800106e:	2800      	cmp	r0, #0
  8001070:	d1f5      	bne.n	800105e <main+0x4e>
-	GPIO_SetBits(GPIOF,GPIO_Pin_10);   //LED1¶ÔÓŠÒýœÅGPIOF.10À­žß£¬Ãð µÈÍ¬LED1=1;
 
 
 	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
+	
 
 	GPIO_SetBits(GPIOF,GPIO_Pin_9);	   //LED0¶ÔÓŠÒýœÅGPIOF.0À­žß£¬Ãð  µÈÍ¬LED0=1;
  8001072:	f44f 7100 	mov.w	r1, #512	; 0x200
- 8001076:	480a      	ldr	r0, [pc, #40]	; (80010a0 <main+0x90>)
+ 8001076:	480f      	ldr	r0, [pc, #60]	; (80010b4 <main+0xa4>)
 
 // not much compiler optimizer settings dependent
 
 {
 
 	float x=50.0f;
- 8001078:	4c0a      	ldr	r4, [pc, #40]	; (80010a4 <main+0x94>)
-	GPIO_SetBits(GPIOF,GPIO_Pin_10);   //LED1¶ÔÓŠÒýœÅGPIOF.10À­žß£¬Ãð µÈÍ¬LED1=1;
+ 8001078:	4c0f      	ldr	r4, [pc, #60]	; (80010b8 <main+0xa8>)
 
 
 	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
+	
 
 	GPIO_SetBits(GPIOF,GPIO_Pin_9);	   //LED0¶ÔÓŠÒýœÅGPIOF.0À­žß£¬Ãð  µÈÍ¬LED0=1;
  800107a:	f7ff fa79 	bl	8000570 <GPIO_SetBits>
 
 	GPIO_ResetBits(GPIOF,GPIO_Pin_10); //LED1¶ÔÓŠÒýœÅGPIOF.10À­µÍ£¬ÁÁ µÈÍ¬LED1=0;
  800107e:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 8001082:	4807      	ldr	r0, [pc, #28]	; (80010a0 <main+0x90>)
+ 8001082:	480c      	ldr	r0, [pc, #48]	; (80010b4 <main+0xa4>)
  8001084:	f7ff fa76 	bl	8000574 <GPIO_ResetBits>
 
 	float x=50.0f;
@@ -3639,7 +3639,7 @@ int main(int argc, char *argv[])
 
 		x = x/1.0001f; // delay loop
  8001088:	4620      	mov	r0, r4
- 800108a:	4907      	ldr	r1, [pc, #28]	; (80010a8 <main+0x98>)
+ 800108a:	490c      	ldr	r1, [pc, #48]	; (80010bc <main+0xac>)
  800108c:	f7ff fe14 	bl	8000cb8 <__aeabi_fdiv>
 
 {
@@ -3647,7 +3647,7 @@ int main(int argc, char *argv[])
 	float x=50.0f;
 
 	while (x > 0.0001f)
- 8001090:	4906      	ldr	r1, [pc, #24]	; (80010ac <main+0x9c>)
+ 8001090:	490b      	ldr	r1, [pc, #44]	; (80010c0 <main+0xb0>)
 
 		x = x/1.0001f; // delay loop
  8001092:	4604      	mov	r4, r0
@@ -3660,9 +3660,33 @@ int main(int argc, char *argv[])
  8001094:	f7ff ff18 	bl	8000ec8 <__aeabi_fcmpgt>
  8001098:	2800      	cmp	r0, #0
  800109a:	d1f5      	bne.n	8001088 <main+0x78>
- 800109c:	e7d4      	b.n	8001048 <main+0x38>
- 800109e:	bf00      	nop
- 80010a0:	40021400 	.word	0x40021400
- 80010a4:	42480000 	.word	0x42480000
- 80010a8:	3f800347 	.word	0x3f800347
- 80010ac:	38d1b717 	.word	0x38d1b717
+ 800109c:	4c06      	ldr	r4, [pc, #24]	; (80010b8 <main+0xa8>)
+
+		x = x/1.0001f; // delay loop
+ 800109e:	4907      	ldr	r1, [pc, #28]	; (80010bc <main+0xac>)
+ 80010a0:	4620      	mov	r0, r4
+ 80010a2:	f7ff fe09 	bl	8000cb8 <__aeabi_fdiv>
+
+{
+
+	float x=50.0f;
+
+	while (x > 0.0001f)
+ 80010a6:	4906      	ldr	r1, [pc, #24]	; (80010c0 <main+0xb0>)
+
+		x = x/1.0001f; // delay loop
+ 80010a8:	4604      	mov	r4, r0
+
+{
+
+	float x=50.0f;
+
+	while (x > 0.0001f)
+ 80010aa:	f7ff ff0d 	bl	8000ec8 <__aeabi_fcmpgt>
+ 80010ae:	2800      	cmp	r0, #0
+ 80010b0:	d1f5      	bne.n	800109e <main+0x8e>
+ 80010b2:	e7c9      	b.n	8001048 <main+0x38>
+ 80010b4:	40021400 	.word	0x40021400
+ 80010b8:	42480000 	.word	0x42480000
+ 80010bc:	3f800347 	.word	0x3f800347
+ 80010c0:	38d1b717 	.word	0x38d1b717

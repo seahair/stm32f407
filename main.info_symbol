@@ -163,12 +163,12 @@
 08000eb4 00000012 T __aeabi_fcmpge
 08000ec8 00000012 T __aeabi_fcmpgt
 08000edc 00000134 T memcpy
-08001010 000000a0 T main
-080010b0 T _etext
-080010b0 R __exidx_end
-080010b0 R __exidx_start
-080010b0 A _sidata
-080014d4 A _siccmram
+08001010 000000b4 T main
+080010c4 T _etext
+080010c4 R __exidx_end
+080010c4 R __exidx_start
+080010c4 A _sidata
+080014e8 A _siccmram
 10000000 ? _eccmram
 10000000 ? _sccmram
 20000000 00000010 D AHBPrescTable
