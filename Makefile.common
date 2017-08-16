@@ -99,3 +99,5 @@ endif
 CFLAGSlib+=$(COMMONFLAGSlib) -Wall -Werror $(INCLUDE)
 CFLAGSlib+=-D $(TypeOfMCU)
 CFLAGSlib+=-D VECT_TAB_FLASH
+
+VPATH = hardware/LED:src
