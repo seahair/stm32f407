@@ -8,8 +8,8 @@ OBJS+=startup.o
 OBJS+=main.o
 OBJS+=stm32f4xx_it.o
 OBJS+=system_stm32f4xx.o
-//OBJS+=usart.o
-OBJS+=led.o
+#OBJS+=usart.o
+#OBJS+=led.o
 
 
 

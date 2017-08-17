@@ -15,18 +15,14 @@ OBJS = $(BUILD_DIR)/led.o
 
 .PHONY: all
 #all: $(OBJS)
-all: $(BUILD_DIR)/*.o $(SUB_LIB)
-	$(AR) -cvq $(LIB_A) $<
+all:  $(SUB_LIB)
+	$(AR) -cvq $(LIB_A) $(BUILD_DIR)/*.o #$^
 
 -include $(DEPS)
 
 .PHONY: $(SUB_LIB)
 $(SUB_LIB):
 	make -C LED
-
-
-#$(BUILD_DIR)/%.o: %.c
-	#$(CC) -fPIC -MMD -c -o $@ $<
 
 $(OBJS): | $(BUILD_DIR)
 
@@ -35,7 +31,6 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 .PHONY: clean
-
 clean:
 	-rm -fr $(BUILD_DIR)
 	-rm -f *.a

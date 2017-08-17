@@ -12,6 +12,8 @@ all: libs src
 	$(CC) -o $(PROGRAM).elf $(LDFLAGS)\
 		-Wl,--whole-archive\
 			src/app.a\
+		-Wl,--whole-archive\
+			hardware/libhardware.a\
 		-Wl,--no-whole-archive\
 			$(LDLIBS)
 	$(OBJCOPY) -O ihex $(PROGRAM).elf $(PROGRAM).hex
