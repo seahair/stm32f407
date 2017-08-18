@@ -8,7 +8,7 @@ LDLIBS+=-lstm32
 
 STARTUP=startup.c
 
-all: libs src
+all: libs src hardware
 	$(CC) -o $(PROGRAM).elf $(LDFLAGS)\
 		-Wl,--whole-archive\
 			src/app.a\
@@ -24,7 +24,7 @@ all: libs src
 	arm-none-eabi-objdump -S $(PROGRAM).elf > $(PROGRAM).info_code
 	arm-none-eabi-nm -t x -S --numeric-sort -s $(PROGRAM).elf > $(PROGRAM).info_symbol
 
-.PHONY: libs src clean tshow
+.PHONY: libs src hardware clean tshow
 
 libs:
 	$(MAKE) -C libs $@
@@ -32,9 +32,13 @@ libs:
 src:
 	$(MAKE) -C src $@
 
+hardware:
+	$(MAKE) -C hardware
+
 clean:
 	$(MAKE) -C src $@
-	$(MAKE) -C libs $@
+#	$(MAKE) -C libs $@
+	$(MAKE) -C hardware $@
 	rm -f $(PROGRAM).elf $(PROGRAM).hex $(PROGRAM).bin $(PROGRAM).info*
 
 tshow:

@@ -15,56 +15,42 @@
 #include "stm32f4xx.h"
 #include "led.h"
 #include "stm32f4xx_rcc.h"
-//
 #include "stm32f4xx_gpio.h"
-
 #include "stm32f4xx_flash.h"
+#include "usart.h"
+#include "beep.h"
 
 //void FLASH_ReadOutProtection_Enable(void);
 
 void DelayByDiv(void);
+void LedBlink(void);
 
 int main(int argc, char *argv[])
 
 {
-
 	LED_Init();
-	
+	BEEP_Init();
 	while(1)
-
 	{
-
-	GPIO_ResetBits(GPIOF,GPIO_Pin_9);  //LED0¶ÔÓŠÒýœÅGPIOF.9À­µÍ£¬ÁÁ  µÈÍ¬LED0=0;
-
-	GPIO_SetBits(GPIOF,GPIO_Pin_10);   //LED1¶ÔÓŠÒýœÅGPIOF.10À­žß£¬Ãð µÈÍ¬LED1=1;
-
-	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
-
-	GPIO_SetBits(GPIOF,GPIO_Pin_9);	   //LED0¶ÔÓŠÒýœÅGPIOF.0À­žß£¬Ãð  µÈÍ¬LED0=1;
-
-	GPIO_ResetBits(GPIOF,GPIO_Pin_10); //LED1¶ÔÓŠÒýœÅGPIOF.10À­µÍ£¬ÁÁ µÈÍ¬LED1=0;
-
-	DelayByDiv(); // delay --> not much compiler optimizer settings dependent
-	DelayByDiv();
-//	printf ("hello world\n");
-
+		LedBlink();
+		//printf ("hello world\n");
 	}
-
 }
 
-
 void DelayByDiv(void)
-
-// delay implemented by floating division
-
-// not much compiler optimizer settings dependent
-
 {
-
 	float x=50.0f;
-
 	while (x > 0.0001f)
-
 		x = x/1.0001f; // delay loop
+}
 
+void LedBlink(void)
+{
+	GPIO_ResetBits(GPIOF,GPIO_Pin_9);  
+	GPIO_SetBits(GPIOF,GPIO_Pin_10);
+	DelayByDiv(); 
+	GPIO_SetBits(GPIOF,GPIO_Pin_9);	
+	GPIO_ResetBits(GPIOF,GPIO_Pin_10);
+	DelayByDiv(); 
+	DelayByDiv();
 }

@@ -6,29 +6,26 @@ AR = arm-none-eabi-ar
 LIB_A = libhardware.a
 
 BUILD_DIR = build
-SUB_LIB = LED
+#SUB_LED = LED
+#SUB_USART = USART
 
-OBJS = $(BUILD_DIR)/led.o
-#SRCS = $(wildcard $(BUILD_DIR)/*.o)
-#OBJS = $(patsubst %.c, $(BUILD_DIR)/%.o, $(SRCS))
-#DEPS = $(patsubst %.o, %.d, $(OBJS))
+OBJS = $(BUILD_DIR)/*.o
 
 .PHONY: all
-#all: $(OBJS)
-all:  $(SUB_LIB)
-	$(AR) -cvq $(LIB_A) $(BUILD_DIR)/*.o #$^
+all: LED BEEP
+	$(AR) -cvq $(LIB_A) $(OBJS)
 
--include $(DEPS)
-
-.PHONY: $(SUB_LIB)
-$(SUB_LIB):
+.PHONY: LED BEEP
+LED:
 	make -C LED
 
-$(OBJS): | $(BUILD_DIR)
+BEEP:
+	make -C BEEP
 
-.PHONY: $(BUILD_DIR)
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+#USART:
+#	make -C USART
+
+$(OBJS): | $(BUILD_DIR)
 
 .PHONY: clean
 clean:
