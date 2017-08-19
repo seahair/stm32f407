@@ -1,4 +1,6 @@
 #include "beep.h" 
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
 
 void BEEP_Init(void)
 {   

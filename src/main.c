@@ -17,7 +17,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_flash.h"
-#include "usart.h"
+//#include "usart.h"
 #include "beep.h"
 
 //void FLASH_ReadOutProtection_Enable(void);
@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
 	BEEP_Init();
 	while(1)
 	{
-		LedBlink();
+		
+		//LedBlink();
 		//printf ("hello world\n");
 	}
 }
