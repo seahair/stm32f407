@@ -56,6 +56,7 @@ INCLUDE+=-I$(STMLIB)/STM32F4xx_StdPeriph_Driver/inc
 INCLUDE+=-I$(TOP)/hardware/LED
 INCLUDE+=-I$(TOP)/hardware/USART
 INCLUDE+=-I$(TOP)/hardware/BEEP
+INCLUDE+=-I$(TOP)/hardware/KEY
 
 COMMONFLAGS=-g -mcpu=cortex-m4 -mthumb
 COMMONFLAGSlib=$(COMMONFLAGS)

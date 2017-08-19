@@ -4,26 +4,31 @@ CC = arm-none-eabi-gcc
 AR = arm-none-eabi-ar
 
 LIB_A = libhardware.a
-
 BUILD_DIR = build
-#SUB_LED = LED
-#SUB_USART = USART
-
 OBJS = $(BUILD_DIR)/*.o
 
+TEST = LED
+TEST += BEEP 
+TEST += KEY
+TEST += USART
+
+
 .PHONY: all
-all: LED BEEP
+all: $(TEST)
 	$(AR) -cvq $(LIB_A) $(OBJS)
 
-.PHONY: LED BEEP
+.PHONY: $(TEST)
 LED:
 	make -C LED
 
 BEEP:
 	make -C BEEP
 
-#USART:
-#	make -C USART
+KEY:
+	make -C KEY
+
+USART:
+	make -C USART
 
 $(OBJS): | $(BUILD_DIR)
 

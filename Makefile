@@ -50,4 +50,4 @@ flash: all
 	./do_flash.pl $(TOP)/main.bin
 
 update:
-	openocd -f /usr/share/openocd/scripts/interface/jlink.cfg  -f /usr/share/openocd/scripts/target/stm32f4x.cfg -c init -c halt -c "flash write_image erase /home/sea/gitworkspace/stm32f407/main.hex" -c reset -c shutdown
+	openocd -f /usr/share/openocd/scripts/interface/jlink.cfg  -f /usr/share/openocd/scripts/target/stm32f4x.cfg -c init -c halt -c "flash write_image erase /home/sea/gitworkspace/stm32f407/main.hex" -c reset -c # shutdown
