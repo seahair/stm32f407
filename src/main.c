@@ -7,8 +7,6 @@
 #include "beep.h"
 #include "key.h"
 
-//void FLASH_ReadOutProtection_Enable(void);
-
 void DelayByDiv(void);
 void LedBlink(void);
 void BeepAlarm( void );
@@ -22,51 +20,56 @@ int main(int argc, char *argv[])
 	BEEP_Init();
 	KEY_Init();      
 	GPIO_ResetBits(GPIOF,GPIO_Pin_9);
-
-
-
  
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	//delay_init(168);	
 	uart_init(115200);	
-	
+//	u8 test1[5] = "hello";
+	u8 test[] = {'h', 'e', 'l', 'l', 'o', '\r','\n'};
 	while(1)
 	{
+		u8 t;
+		for(t=0;t<7;t++)
+		{
+			USART_SendData(USART1, test[t]);
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+		}
 
-#if 1
+		
+		
+#if 0
 	u8 t;
 	u8 len;	
 	u16 times=0; 
 		if(USART_RX_STA&0x8000)
 		{					   
-			len=USART_RX_STA&0x3fff;//µÃµœŽËŽÎœÓÊÕµœµÄÊýŸÝ³€¶È
-//			printf("\r\nÄú·¢ËÍµÄÏûÏ¢Îª:\r\n");
+			len=USART_RX_STA&0x3fff;
 			for(t=0;t<len;t++)
 			{
-				USART_SendData(USART1, USART_RX_BUF[t]);         //ÏòŽ®¿Ú1·¢ËÍÊýŸÝ
-				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//µÈŽý·¢ËÍœáÊø
+				USART_SendData(USART1, USART_RX_BUF[t]);
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
 			}
-			//		printf("\r\n\r\n");//²åÈë»»ÐÐ
+
 			USART_RX_STA=0;
 		}else
 		{
 			times++;
 			if(times%5000==0)
 			{
-				//printf("\r\nALIENTEK ÌœË÷ÕßSTM32F407¿ª·¢°å Ž®¿ÚÊµÑé\r\n");
-				//printf("ÕýµãÔ­×Ó@ALIENTEK\r\n\r\n\r\n");
+
+
 			}
 			if(times%200==0)
-				//printf("ÇëÊäÈëÊýŸÝ,ÒÔ»Ø³µŒüœáÊø\r\n");
+
 				GPIO_SetBits(GPIOF,GPIO_Pin_10);
 			if(times%30==0)
 				GPIO_ResetBits(GPIOF,GPIO_Pin_10);
-//				LED0=!LED0;//ÉÁËžLED,ÌáÊŸÏµÍ³ÕýÔÚÔËÐÐ.
-			//delay_ms(10);
+
 			DelayByDiv();
 		}
-#endif		
-//KeyTest();
+#endif
+		
+		//KeyTest();
 		LedBlink();
 		//printf ("hello world\n");
 		//BeepAlarm();
