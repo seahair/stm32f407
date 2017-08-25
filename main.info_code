@@ -980,8 +980,6 @@ void LED_Init(void)
  80004b4:	4621      	mov	r1, r4
  80004b6:	f000 fa2f 	bl	8000918 <GPIO_SetBits>
 
-
-	
 }
  80004ba:	b002      	add	sp, #8
  80004bc:	bd70      	pop	{r4, r5, r6, pc}
