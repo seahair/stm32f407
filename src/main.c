@@ -8,7 +8,7 @@
 #include "key.h"
 
 void DelayByDiv(void);
-void LedBlink(void);
+//void LedBlink(void);
 void BeepAlarm( void );
 void KeyTest( void );
 
@@ -16,13 +16,14 @@ void KeyTest( void );
 int main(int argc, char *argv[])
 
 {
-	LED_Init();
+	LedInit( LedRed );
+	LedInit( LedGreen );
 	BEEP_Init();
 	KEY_Init();      
 	GPIO_ResetBits(GPIOF,GPIO_Pin_9);
  
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	//delay_init(168);	
+
 	uart_init(115200);	
 //	u8 test1[5] = "hello";
 	u8 test[] = {'h', 'e', 'l', 'l', 'o', '\r','\n'};
@@ -70,7 +71,8 @@ int main(int argc, char *argv[])
 #endif
 		
 		//KeyTest();
-		LedBlink();
+		LedBlink( LedRed );
+		LedBlink( LedGreen );
 		//printf ("hello world\n");
 		//BeepAlarm();
 	}
@@ -81,17 +83,6 @@ void DelayByDiv(void)
 	float x=50.0f;
 	while (x > 0.0001f)
 		x = x/1.0001f; // delay loop
-}
-
-void LedBlink(void)
-{
-	GPIO_ResetBits(GPIOF,GPIO_Pin_9);  
-	//GPIO_SetBits(GPIOF,GPIO_Pin_10);
-	DelayByDiv(); 
-	GPIO_SetBits(GPIOF,GPIO_Pin_9);	
-	//GPIO_ResetBits(GPIOF,GPIO_Pin_10);
-	DelayByDiv(); 
-	DelayByDiv();
 }
 
 void BeepAlarm( void )

@@ -18,3 +18,45 @@ void LED_Init(void)
 	GPIO_SetBits(GPIOF,GPIO_Pin_9 | GPIO_Pin_10);//GPIOF9,F10ÉèÖÃžß£¬µÆÃð
 
 }
+
+#if 1
+
+void LedInit( u16 pin )
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);  //Only support the GPIOF as OutPut
+	GPIO_InitStructure.GPIO_Pin = pin;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(GPIOF, &GPIO_InitStructure);
+	
+	GPIO_SetBits(GPIOF, pin);
+}
+
+void LedON( u16 pin )
+{
+	GPIO_ResetBits(GPIOF, pin);
+}
+
+void LedOFF( u16 pin )
+{
+	GPIO_SetBits(GPIOF, pin);
+}
+
+void LedBlink( u16 pin )
+{
+	LedON( pin );
+	u16 n,m;
+	for(n=0; n<100; n++)
+		for(m=0; m<50000; m++);
+	LedOFF( pin );
+}
+
+u8 GetLedStatus( u16 pin )
+{
+	return GPIO_ReadOutputDataBit(GPIOF, pin);
+}
+
+#endif
