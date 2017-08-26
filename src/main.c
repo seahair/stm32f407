@@ -12,17 +12,19 @@ void DelayByDiv(void);
 void BeepAlarm( void );
 void KeyTest( void );
 
+void HardInit( void );
+
 
 int main(int argc, char *argv[])
 
 {
-	LedInit( LedRed );
-	LedInit( LedGreen );
+	HardInit();
+
 	BEEP_Init();
 	KEY_Init();      
 	GPIO_ResetBits(GPIOF,GPIO_Pin_9);
  
-	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+
 
 	uart_init(115200);	
 //	u8 test1[5] = "hello";
@@ -117,3 +119,9 @@ void KeyTest( void )
 		}else  DelayByDiv();
 }
 	
+void HardInit( void )
+{
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	LedInit( LedRed );
+	LedInit( LedGreen );	
+}

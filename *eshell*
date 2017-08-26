@@ -1,0 +1,1050 @@
+Welcome to the Emacs shell
+
+~/gitworkspace/stm32f407/hardware/LED $ cd ../..
+~/gitworkspace/stm32f407 $ find ./ -name stm32f4xx_gpio.h
+./libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ ls libs/
+Makefile  Makefile~  STM32F4xx_DSP_StdPeriph_Lib_V1.8.0  libstm32.a
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+In file included from main.c:2:0:
+/home/sea/gitworkspace/stm32f407/hardware/LED/led.h:16:2: error: expected specifier-qualifier-list before 'bool'
+  bool (*GetLedStatus) ( void );
+  ^
+<builtin>: recipe for target 'main.o' failed
+make[1]: *** [main.o] Error 1
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+Makefile:33: recipe for target 'src' failed
+make: *** [src] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+In file included from main.c:2:0:
+/home/sea/gitworkspace/stm32f407/hardware/LED/led.h:16:2: error: expected specifier-qualifier-list before 'bool'
+  bool (*GetLedStatus) ( void );
+  ^
+<builtin>: recipe for target 'main.o' failed
+make[1]: *** [main.o] Error 1
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+Makefile:33: recipe for target 'src' failed
+make: *** [src] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+In file included from led.c:1:0:
+led.h:11:2: error: unknown type name 'u16'
+  u16 pin;
+  ^
+led.h:12:20: error: unknown type name 'u16'
+  void (*LedInit) ( u16 pin);
+                    ^
+led.h:16:5: error: expected specifier-qualifier-list before 'u8'
+     u8   (*GetLedStatus) ( void );
+     ^
+Makefile:17: recipe for target '../build/led.o' failed
+make[2]: *** [../build/led.o] Error 1
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+Makefile:22: recipe for target 'LED' failed
+make[1]: *** [LED] Error 2
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+Makefile:36: recipe for target 'hardware' failed
+make: *** [hardware] Error 2
+~/gitworkspace/stm32f407 $ find ./ -name stm32f4xx.h
+./libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+main.c:11:6: error: conflicting types for 'LedBlink'
+ void LedBlink(void);
+      ^
+In file included from main.c:2:0:
+/home/sea/gitworkspace/stm32f407/hardware/LED/led.h:26:6: note: previous declaration of 'LedBlink' was here
+ void LedBlink( u16 pin );
+      ^
+main.c:86:6: error: conflicting types for 'LedBlink'
+ void LedBlink(void)
+      ^
+In file included from main.c:2:0:
+/home/sea/gitworkspace/stm32f407/hardware/LED/led.h:26:6: note: previous declaration of 'LedBlink' was here
+ void LedBlink( u16 pin );
+      ^
+<builtin>: recipe for target 'main.o' failed
+make[1]: *** [main.o] Error 1
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+Makefile:33: recipe for target 'src' failed
+make: *** [src] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+main.c:11:6: error: conflicting types for 'LedBlink'
+ void LedBlink(void);
+      ^
+In file included from main.c:2:0:
+/home/sea/gitworkspace/stm32f407/hardware/LED/led.h:26:6: note: previous declaration of 'LedBlink' was here
+ void LedBlink( u16 pin );
+      ^
+main.c: In function 'main':
+main.c:73:3: error: too many arguments to function 'LedBlink'
+   LedBlink( LedRed );
+   ^
+main.c:11:6: note: declared here
+ void LedBlink(void);
+      ^
+<builtin>: recipe for target 'main.o' failed
+make[1]: *** [main.o] Error 1
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+Makefile:33: recipe for target 'src' failed
+make: *** [src] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+led.c: In function 'LedBlink':
+led.c:52:11: error: 't' undeclared (first use in this function)
+  for(n=0; t<100; t++)
+           ^
+led.c:52:11: note: each undeclared identifier is reported only once for each function it appears in
+led.c:53:24: error: expected ')' before '}' token
+   for(m=0; m<50000; m++};
+                        ^
+led.c:53:24: error: expected expression before '}' token
+led.c:51:6: error: variable 'n' set but not used [-Werror=unused-but-set-variable]
+  u16 n,m;
+      ^
+led.c: At top level:
+led.c:54:2: error: data definition has no type or storage class [-Werror]
+  LedOFF( pin );
+  ^
+led.c:54:2: error: type defaults to 'int' in declaration of 'LedOFF' [-Werror=implicit-int]
+led.c:54:2: error: parameter names (without types) in function declaration [-Werror]
+led.c:54:2: error: conflicting types for 'LedOFF'
+led.c:43:6: note: previous definition of 'LedOFF' was here
+ void LedOFF( u16 pin )
+      ^
+led.c:55:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+cc1: all warnings being treated as errors
+Makefile:17: recipe for target '../build/led.o' failed
+make[2]: *** [../build/led.o] Error 1
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+Makefile:22: recipe for target 'LED' failed
+make[1]: *** [LED] Error 2
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+Makefile:36: recipe for target 'hardware' failed
+make: *** [hardware] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+led.c: In function 'LedBlink':
+led.c:53:24: error: expected ')' before '}' token
+   for(m=0; m<50000; m++};
+                        ^
+led.c:53:24: error: expected expression before '}' token
+led.c: At top level:
+led.c:54:2: error: data definition has no type or storage class [-Werror]
+  LedOFF( pin );
+  ^
+led.c:54:2: error: type defaults to 'int' in declaration of 'LedOFF' [-Werror=implicit-int]
+led.c:54:2: error: parameter names (without types) in function declaration [-Werror]
+led.c:54:2: error: conflicting types for 'LedOFF'
+led.c:43:6: note: previous definition of 'LedOFF' was here
+ void LedOFF( u16 pin )
+      ^
+led.c:55:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+cc1: all warnings being treated as errors
+Makefile:17: recipe for target '../build/led.o' failed
+make[2]: *** [../build/led.o] Error 1
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+Makefile:22: recipe for target 'LED' failed
+make[1]: *** [LED] Error 2
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+Makefile:36: recipe for target 'hardware' failed
+make: *** [hardware] Error 2
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ ls
+#Makefile#       Makefile~     inc        main.elf        main.info_size    src
+LED.hex          do_flash.pl   libs       main.hex        main.info_symbol  
+Makefile         do_flash.pl~  linker.ld  main.info_code  openocd.cfg       
+Makefile.common  hardware      main.bin   main.info_elf   readme.txt        
+~/gitworkspace/stm32f407 $ ls
+#Makefile#  Makefile         Makefile~    do_flash.pl~  inc   linker.ld    readme.txt
+LED.hex     Makefile.common  do_flash.pl  hardware      libs  openocd.cfg  src
+~/gitworkspace/stm32f407 $ cd src/
+~/gitworkspace/stm32f407/src $ ls
+Makefile  main.c  startup.c  stm32f4xx_it.c  system_stm32f4xx.c
+~/gitworkspace/stm32f407/src $ touch delay.c
+~/gitworkspace/stm32f407/src $ touch delay.h
+~/gitworkspace/stm32f407/src $ ls
+Makefile  delay.c  delay.h  main.c  startup.c  stm32f4xx_it.c  system_stm32f4xx.c
+~/gitworkspace/stm32f407/src $ cd ..
+~/gitworkspace/stm32f407 $ ls
+#Makefile#  Makefile         Makefile~    do_flash.pl~  inc   linker.ld    readme.txt
+LED.hex     Makefile.common  do_flash.pl  hardware      libs  openocd.cfg  src
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o delay.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o delay.o delay.c
+arm-none-eabi-ar cr app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o delay.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+make -C LED
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/led.o led.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/LED'
+make -C BEEP
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/beep.o beep.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/BEEP'
+make -C KEY
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/key.o key.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/KEY'
+make -C USART
+make[2]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+mkdir -p ../build
+arm-none-eabi-gcc -fPIC -MMD -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH -c -o ../build/usart.o usart.c
+make[2]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware/USART'
+arm-none-eabi-ar -cvq libhardware.a build/*.o
+a - build/beep.o
+a - build/key.o
+a - build/led.o
+a - build/usart.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+arm-none-eabi-gcc -o main.elf -g -mcpu=cortex-m4 -mthumb -O3 -fno-exceptions -ffunction-sections -fdata-sections -L/home/sea/gitworkspace/stm32f407/libs -nostartfiles -Wl,--gc-sections,-Tlinker.ld\
+	-Wl,--whole-archive\
+		src/app.a\
+	-Wl,--whole-archive\
+		hardware/libhardware.a\
+	-Wl,--no-whole-archive\
+		-lm -lstm32
+arm-none-eabi-objcopy -O ihex main.elf main.hex
+arm-none-eabi-objcopy -O binary main.elf main.bin
+arm-none-eabi-readelf -a main.elf > main.info_elf
+arm-none-eabi-size -d -B -t main.elf > main.info_size
+arm-none-eabi-objdump -S main.elf > main.info_code
+arm-none-eabi-nm -t x -S --numeric-sort -s main.elf > main.info_symbol
+~/gitworkspace/stm32f407 $ make clean
+/usr/bin/make -C src clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+rm -f app.a startup.o main.o stm32f4xx_it.o system_stm32f4xx.o delay.o
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+/usr/bin/make -C hardware clean
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -fr build
+rm -f *.a
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/hardware'
+rm -f main.elf main.hex main.bin main.info*
+~/gitworkspace/stm32f407 $ make
+/usr/bin/make -C libs libs
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/libs'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/libs'
+/usr/bin/make -C src src
+make[1]: Entering directory '/home/sea/gitworkspace/stm32f407/src'
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o startup.o startup.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o main.o main.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o stm32f4xx_it.o stm32f4xx_it.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o system_stm32f4xx.o system_stm32f4xx.c
+arm-none-eabi-gcc -D RELEASE_PUBLIC -g -mcpu=cortex-m4 -mthumb -O3 -Wall -Werror -I/home/sea/gitworkspace/stm32f407/inc -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Include -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates -I/home/sea/gitworkspace/stm32f407/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries/STM32F4xx_StdPeriph_Driver/inc -I/home/sea/gitworkspace/stm32f407/hardware/LED -I/home/sea/gitworkspace/stm32f407/hardware/USART -I/home/sea/gitworkspace/stm32f407/hardware/BEEP -I/home/sea/gitworkspace/stm32f407/hardware/KEY -D STM32F40_41xxx -D VECT_TAB_FLASH   -c -o delay.o delay.c
+delay.c: In function 'delay_init':
+delay.c:5:2: error: implicit declaration of function 'SysTick_CLKSourceConfig' [-Werror=implicit-function-declaration]
+  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);//选择外部时钟 HCLK/8
+  ^
+delay.c:5:26: error: 'SysTick_CLKSource_HCLK_Div8' undeclared (first use in this function)
+  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);//选择外部时钟 HCLK/8
+                          ^
+delay.c:5:26: note: each undeclared identifier is reported only once for each function it appears in
+delay.c:6:2: error: 'fac_us' undeclared (first use in this function)
+  fac_us=SystemCoreClock/8000000; //为系统时钟的 1/8
+  ^
+delay.c:7:2: error: 'fac_ms' undeclared (first use in this function)
+  fac_ms=(u16)fac_us*1000;//非 ucos 下,代表每个 ms 需要的 systick 时钟数
+  ^
+cc1: all warnings being treated as errors
+<builtin>: recipe for target 'delay.o' failed
+make[1]: *** [delay.o] Error 1
+make[1]: Leaving directory '/home/sea/gitworkspace/stm32f407/src'
+Makefile:33: recipe for target 'src' failed
+make: *** [src] Error 2
+~/gitworkspace/stm32f407 $ 
