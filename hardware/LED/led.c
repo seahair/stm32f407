@@ -2,6 +2,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_flash.h"
+#include "delay.h"
 
 void LED_Init(void)
 {
@@ -48,10 +49,9 @@ void LedOFF( u16 pin )
 void LedBlink( u16 pin )
 {
 	LedON( pin );
-	u16 n,m;
-	for(n=0; n<100; n++)
-		for(m=0; m<50000; m++);
+	delay_ms( 1000 );
 	LedOFF( pin );
+	delay_ms( 1000 );
 }
 
 u8 GetLedStatus( u16 pin )

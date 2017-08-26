@@ -6,6 +6,8 @@
 #include "usart.h"
 #include "beep.h"
 #include "key.h"
+#include "delay.h"
+
 
 void DelayByDiv(void);
 //void LedBlink(void);
@@ -74,9 +76,13 @@ int main(int argc, char *argv[])
 		
 		//KeyTest();
 		LedBlink( LedRed );
-		LedBlink( LedGreen );
+		//LedBlink( LedGreen );
 		//printf ("hello world\n");
 		//BeepAlarm();
+		//LedON( LedRed );
+		//DelayByDiv();
+		//LedOFF( LedRed );
+		//DelayByDiv();
 	}
 }
 
@@ -122,6 +128,7 @@ void KeyTest( void )
 void HardInit( void )
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	delay_init( 168 );
 	LedInit( LedRed );
 	LedInit( LedGreen );	
 }
