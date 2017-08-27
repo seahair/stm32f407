@@ -2,9 +2,14 @@
 #define __BEEP_H	 
 #include "sys.h" 
 
-#define BEEP PFout(8)	// 蜂鸣器控制IO 
+//#define BEEP PFout(8)	// 蜂鸣器控制IO 
+#define BEEPPIN  GPIO_Pin_8
+void BEEP_Init(void);
+void BeepON( void );
+void BeepOFF( void );
+void BeepAlarm( u16 hz );
 
-void BEEP_Init(void);//初始化		 				    
+
 #endif
 
 
