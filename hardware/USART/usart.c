@@ -1,62 +1,42 @@
 #include "sys.h"
 #include "usart.h"	
 #include "led.h"
+//#include <stdio.h>
+//#include <stdlib.h>
 
-#if 0
-int _write(int fd, char *ptr, int len)
-{
-    int i = 0;
-
-    /*
-     * write "len" of char from "ptr" to file id "fd"
-     * Return number of char written.
-     *
-    * Only work for STDOUT, STDIN, and STDERR
-     */
-    if (fd > 2)
-    {
-        return -1;
-    }
-
-    while (*ptr && (i < len))
-    {
-        usart_send_blocking(USART1, *ptr);
-
-        if (*ptr == '\n')
-        {
-            usart_send_blocking(USART1, '\r');
-        }
-
-        i++;
-        ptr++;
-    }
-
-    return i;
-}
-#endif
-
-#if 0
-#pragma import(__use_no_semihosting)             
-
-struct __FILE 
-{ 
-	int handle; 
-}; 
-
-FILE __stdout;       
-
-void _sys_exit(int x) 
-{ 
-	x = x; 
+int _write (int fd, char *pBuffer, int size)  
+{  
+	for (int i = 0; i < size; i++)  
+	{  
+		while (!(USART1->SR & USART_SR_TXE))  
+		{  
+		}  
+		USART_SendData(USART1, pBuffer[i]);
+/*		if (pBuffer[i] == '\n')
+		{
+			USART_SendData(USART1, '\r');
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+			USART_SendData(USART1, '\n');
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+		}*/
+	}
+	
+	return size;  
+}  
+int _read (int fd, char *pBuffer, int size)  
+{  
+	for (int i = 0; i < size; i++)  
+	{  
+		while ((USART1->SR & USART_SR_RXNE) == 0)  
+		{  
+		}  
+  
+		pBuffer[i] = USART_ReceiveData(USART1);  
+	}  
+	return size;  
 } 
 
-int fputc(int ch, FILE *f)
-{ 	
-	while((USART1->SR&0X40)==0);
-	USART1->DR = (u8) ch;      
-	return ch;
-}
-#endif
+
  
 #if EN_USART1_RX
 
@@ -122,7 +102,9 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 		Res = USART_ReceiveData(USART1);
 
 		//	LedBlink( LedGreen );
-		LedBlink( Res );
+		//LedBlink( Res );
+		USART_SendData( USART1, Res );
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
 		
 
 		

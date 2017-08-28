@@ -57,8 +57,9 @@ INCLUDE+=-I$(TOP)/hardware/LED
 INCLUDE+=-I$(TOP)/hardware/USART
 INCLUDE+=-I$(TOP)/hardware/BEEP
 INCLUDE+=-I$(TOP)/hardware/KEY
+INCLUDE+=-I$(TOP)/hardware/EXTI
 
-COMMONFLAGS=-g -mcpu=cortex-m4 -mthumb  -specs=nosys.specs #-mfloat-abi=hard #-mfpu=fpv4-sp-d16
+COMMONFLAGS=-g -mcpu=cortex-m4 -mthumb -std=c99 -specs=nosys.specs #-mfloat-abi=hard #-mfpu=fpv4-sp-d16
 COMMONFLAGSlib=$(COMMONFLAGS)
 #Commands for general Makefile and src Makefile
 ifeq ($(OptSRC),0)

@@ -12,14 +12,14 @@ void KEY_Init(void)
 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOE, ENABLE);// GPIOA And GPIOE
  
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4; //KEY0 KEY1 KEY2 
+	GPIO_InitStructure.GPIO_Pin = KEY0|KEY1|KEY2; //KEY0 KEY1 KEY2 
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;// Pin load to GND by Key, So Pull UP
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 	
 	 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;    //KEY WEAKUP
+	GPIO_InitStructure.GPIO_Pin = WK_UP;    //KEY WEAKUP
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN ;//Pin load to 3V3 by Key, So Pull DOWN
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
  

@@ -11,7 +11,7 @@ TEST = LED
 TEST += BEEP 
 TEST += KEY
 TEST += USART
-
+TEST += EXTI
 
 .PHONY: all
 all: $(TEST)
@@ -29,6 +29,9 @@ KEY:
 
 USART:
 	make -C USART
+
+EXTI:
+	make -C EXTI
 
 $(OBJS): | $(BUILD_DIR)
 
