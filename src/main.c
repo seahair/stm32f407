@@ -7,12 +7,11 @@
 #include "beep.h"
 #include "key.h"
 #include "delay.h"
-
-
-
-void KeyTest( void );
+#include <stdio.h>
+#include <stdlib.h>
 
 void HardInit( void );
+int _write(int fd, char *ptr, int len);
 
 
 int main(int argc, char *argv[])
@@ -22,7 +21,6 @@ int main(int argc, char *argv[])
 	KEY_Init();      
 
 
-//	u8 test1[5] = "hello";
 	u8 test[] = {'h', 'e', 'l', 'l', 'o', '\r','\n'};
 	while(1)
 	{
@@ -33,7 +31,7 @@ int main(int argc, char *argv[])
 			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
 		}
 		
-		//KeyTest();
+		KeyTest();
 		LedBlink( LedRed );
 
 		//printf ("hello world\n");
@@ -42,31 +40,6 @@ int main(int argc, char *argv[])
 	}
 }
 
-
-void KeyTest( void )
-{
-   	u8 key;
-		key=KEY_Scan(0);		//µÃµœŒüÖµ
-	   	if(key)
-		{						   
-			switch(key)
-			{				 
-				case WKUP_PRES:	//¿ØÖÆ·äÃùÆ÷
-					GPIO_ResetBits(GPIOF,GPIO_Pin_9);
-					break;
-				case KEY0_PRES:	//¿ØÖÆLED0·­×ª
-					GPIO_SetBits(GPIOF,GPIO_Pin_9);
-					break;
-				case KEY1_PRES:	//¿ØÖÆLED1·­×ª	 
-					GPIO_ResetBits(GPIOF,GPIO_Pin_10);
-					break;
-				case KEY2_PRES:	//Í¬Ê±¿ØÖÆLED0,LED1·­×ª 
-					GPIO_SetBits(GPIOF,GPIO_Pin_10);
-					break;
-			}
-		}else
-			delay_ms( 100 );
-}
 	
 void HardInit( void )
 {
@@ -76,4 +49,36 @@ void HardInit( void )
 	LedInit( LedGreen );	
 	BEEP_Init();
 	uart_init(115200);	
+}
+
+int _write(int fd, char *ptr, int len)
+{
+	int i = 0;
+
+
+	 //write "len" of char from "ptr" to file id "fd"
+	 //Return number of char written.
+	 //Only work for STDOUT, STDIN, and STDERR
+
+	if (fd > 2)
+	{
+		return -1;
+	}
+
+	while (*ptr && (i < len))
+	{
+		USART_SendData(USART1, *ptr);
+		//usart_send_blocking(USART1, *ptr);
+
+		if (*ptr == '\n')
+		{
+			USART_SendData(USART1, '\r');
+			//usart_send_blocking(USART1, '\r');
+		}
+
+		i++;
+		ptr++;
+	}
+
+	return i;
 }

@@ -1,8 +1,8 @@
 #include "key.h"
-//#include "delay.h" 
+#include "delay.h" 
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
-
+#include "led.h"
 
 
 void KEY_Init(void)
@@ -10,36 +10,93 @@ void KEY_Init(void)
 	
 	GPIO_InitTypeDef  GPIO_InitStructure;
 
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOE, ENABLE);//使能GPIOA,GPIOE时钟
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOE, ENABLE);// GPIOA And GPIOE
  
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4; //KEY0 KEY1 KEY2对应引脚
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
-  GPIO_Init(GPIOE, &GPIO_InitStructure);//初始化GPIOE2,3,4
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4; //KEY0 KEY1 KEY2 
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;// Pin load to GND by Key, So Pull UP
+	GPIO_Init(GPIOE, &GPIO_InitStructure);
 	
 	 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;//WK_UP对应引脚PA0
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN ;//下拉
-  GPIO_Init(GPIOA, &GPIO_InitStructure);//初始化GPIOA0
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;    //KEY WEAKUP
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN ;//Pin load to 3V3 by Key, So Pull DOWN
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
  
-} 
+}
+
+u8 GetKEY0Status( void )
+{
+	return GPIO_ReadInputDataBit(GPIOE, KEY0);
+}
+
+u8 GetKEY1Status( void )
+{
+	return GPIO_ReadInputDataBit(GPIOE, KEY1);
+}
+
+u8 GetKEY2Status( void )
+{
+	return GPIO_ReadInputDataBit(GPIOE, KEY2);
+}
+
+u8 GetKEYWKUPStatus( void )
+{
+	return GPIO_ReadInputDataBit(GPIOA, WK_UP);
+}
 
 
 u8 KEY_Scan(u8 mode)
 {	 
-	static u8 key_up=1;//按键按松开标志
-	if(mode)key_up=1;  //支持连按		  
-	if(key_up&&(KEY0==0||KEY1==0||KEY2==0||WK_UP==1))
+	static u8 key_up=1;//掳麓录眉掳麓脣脡驴陋卤锚脰戮
+	if(mode)key_up=1;  //脰搂鲁脰脕卢掳麓		  
+	if(key_up &&
+	   (GetKEY0Status()    == KEY0_PRESS ||
+		GetKEY1Status()    == KEY1_PRESS ||
+		GetKEY2Status()    == KEY2_PRESS ||
+		GetKEYWKUPStatus() == KEY_WK_UP_PRESS )
+	  )
 	{
-//		delay_ms(10);//去抖动 
+		delay_ms(10);//脠楼露露露炉 
 		key_up=0;
-		if(KEY0==0)return 1;
-		else if(KEY1==0)return 2;
-		else if(KEY2==0)return 3;
-		else if(WK_UP==1)return 4;
-	}else if(KEY0==1&&KEY1==1&&KEY2==1&&WK_UP==0)key_up=1; 	    
- 	return 0;// 无按键按下
+		if( GetKEY0Status() == KEY0_PRESS )return KEY0_ACTIVE;
+		else if( GetKEY1Status()    == KEY1_PRESS )return KEY1_ACTIVE ;
+		else if( GetKEY2Status()    == KEY2_PRESS )return KEY2_ACTIVE;
+		else if( GetKEYWKUPStatus() == KEY_WK_UP_PRESS )return WKUP_ACTIVE;
+	}else
+	if( GetKEY0Status()    == KEY0_RELEASE &&
+		GetKEY1Status()    == KEY1_RELEASE &&
+		GetKEY2Status()    == KEY2_RELEASE &&
+		GetKEYWKUPStatus() == KEY_WK_UP_RELEASE 
+		)
+		key_up=1; 	    
+ 	return 0;// 脦脼掳麓录眉掳麓脧脗
+}
+
+
+void KeyTest( void )
+{
+   	u8 key;
+	key=KEY_Scan(0);		//碌脙碌艙艗眉脰碌
+	if(key)
+	{						   
+		switch(key)
+		{				 
+		case WKUP_ACTIVE:	//驴脴脰脝路盲脙霉脝梅
+			LedON( LedRed );
+			break;
+		case KEY0_ACTIVE:	//驴脴脰脝LED0路颅脳陋
+			LedOFF( LedRed );
+			break;
+		case KEY1_ACTIVE:	//驴脴脰脝LED1路颅脳陋	 
+			LedON( LedGreen );
+			break;
+		case KEY2_ACTIVE:	//脥卢脢卤驴脴脰脝LED0,LED1路颅脳陋 
+			LedOFF( LedGreen );
+			break;
+		}
+	}else
+		delay_ms( 100 );
 }
 
 
