@@ -15,7 +15,6 @@ int _write(int fd, char *ptr, int len);
 
 
 int main(int argc, char *argv[])
-
 {
 	HardInit();
 	KEY_Init();      
@@ -34,7 +33,7 @@ int main(int argc, char *argv[])
 		KeyTest();
 		LedBlink( LedRed );
 
-		//printf ("hello world\n");
+		printf ("hello world\n");
 		//BeepAlarm( 500 );
 
 	}
@@ -51,6 +50,7 @@ void HardInit( void )
 	uart_init(115200);	
 }
 
+/*
 int _write(int fd, char *ptr, int len)
 {
 	int i = 0;
@@ -81,4 +81,28 @@ int _write(int fd, char *ptr, int len)
 	}
 
 	return i;
-}
+}*/
+
+int _write (int fd, char *pBuffer, int size)  
+{  
+	for (int i = 0; i < size; i++)  
+	{  
+		while (!(USART1->SR & USART_SR_TXE))  
+		{  
+		}  
+		USART_SendData(USART1, pBuffer[i]);  
+	}  
+	return size;  
+}  
+int _read (int fd, char *pBuffer, int size)  
+{  
+	for (int i = 0; i < size; i++)  
+	{  
+		while ((USART1->SR & USART_SR_RXNE) == 0)  
+		{  
+		}  
+  
+		pBuffer[i] = USART_ReceiveData(USART1);  
+	}  
+	return size;  
+} 
