@@ -10,9 +10,10 @@
 
 void EXTI0_IRQHandler(void)
 {
-	delay_ms(10);	//Ïû¶¶
+	//delay_ms(10);	//Ïû¶¶
 	if(GetKEYWKUPStatus() == KEY_WK_UP_PRESS)	 
 	{
+		while( GetKEYWKUPStatus() != KEY_WK_UP_RELEASE );
 		if( GetLedStatus( LedGreen ) == LedStatus_OFF )
 			LedON( LedGreen );
 		else
