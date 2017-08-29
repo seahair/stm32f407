@@ -59,6 +59,7 @@ INCLUDE+=-I$(TOP)/hardware/BEEP
 INCLUDE+=-I$(TOP)/hardware/KEY
 INCLUDE+=-I$(TOP)/hardware/EXTI
 INCLUDE+=-I$(TOP)/hardware/TIME
+INCLUDE+=-I$(TOP)/hardware/PWM
 
 
 

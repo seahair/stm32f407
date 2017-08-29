@@ -13,7 +13,7 @@ TEST += KEY
 TEST += USART
 TEST += EXTI
 TEST += TIME
-
+TEST += PWM
 
 .PHONY: all
 all: $(TEST)
@@ -37,6 +37,9 @@ EXTI:
 
 TIME:
 	make -C TIME
+
+PWM:
+	make -C PWM
 
 $(OBJS): | $(BUILD_DIR)
 

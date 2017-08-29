@@ -8,18 +8,19 @@
 #include "stm32f4xx_rcc.h"
 #include "usart.h"
 
+//PullUP pin Use extIntrupter not very Good
 void EXTI0_IRQHandler(void)
 {
-	//delay_ms(10);	//Ïû¶¶
+	delay_ms(50);	//Ïû¶¶
 	if(GetKEYWKUPStatus() == KEY_WK_UP_PRESS)	 
 	{
-		while( GetKEYWKUPStatus() != KEY_WK_UP_RELEASE );
+		//	while( GetKEYWKUPStatus() != KEY_WK_UP_RELEASE );
 		if( GetLedStatus( LedGreen ) == LedStatus_OFF )
 			LedON( LedGreen );
 		else
 			LedOFF( LedGreen );
 		printf ("WK_UP  PRESS\r\n");
-		delay_ms(1000);	//Ïû¶¶
+		delay_ms(100);	//Ïû¶¶
 	}
 	
 	EXTI_ClearITPendingBit(EXTI_Line0); //Çå³ýLINE0ÉÏµÄÖÐ¶Ï±êÖ¾Î» 
@@ -35,7 +36,7 @@ void EXTI2_IRQHandler(void)
 		else
 			LedOFF( LedGreen );
 		printf ("KEY2  PRESS\r\n");
-		delay_ms(1000);	//Ïû¶¶
+		delay_ms(100);	//Ïû¶¶
 	}
 	
 	EXTI_ClearITPendingBit(EXTI_Line2);//Çå³ýLINE2ÉÏµÄÖÐ¶Ï±êÖŸÎ» 

@@ -9,6 +9,7 @@
 #include "delay.h"
 #include "exti.h"
 #include "time.h"
+#include "pwm.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,19 +18,20 @@ void HardInit( void );
 int main(int argc, char *argv[])
 {
 	HardInit();
-
-	//u8 test[] = {'h', 'e', 'l', 'l', 'o', '\r','\n'};
+	u16 led0pwmval=0; 
+	u8 dir=1;
 	while(1)
 	{
-		//	u8 t;
-		//for(t=0;t<7;t++)
-		//{
-		//	USART_SendData(USART1, test[t]);
-		//	while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
-		//}
+		delay_ms(10);
+		if(dir)led0pwmval++;//dir==1 led0pwmval 递增
+		else led0pwmval--; //dir==0 led0pwmval 递减
+		if(led0pwmval>300)dir=0;//led0pwmval 到达 300 后，方向为递减
+		if(led0pwmval==0)dir=1; //led0pwmval 递减到 0 后，方向改为递增
+		Time4PwnSetDuty( led0pwmval ); //修改比较值，修改占空比
+
 		
 //		KeyTest();
-		LedBlink( LedRed );
+	 //	LedBlink( LedRed );
 		
 		printf ("hello world\r\n");
 		//BeepAlarm( 500 );
@@ -48,7 +50,8 @@ void HardInit( void )
 	uart_init(115200);
 	KEY_Init();
 	EXTIX_Init();
-	TIM3_Int_Init(5000-1,8400-1);
-	//Tim3Init_ms( 1000 );
+//	TIM3_Int_Init(5000-1,8400-1);
+//	Tim3Init_ms( 1000 );
+	TIM14_PWM_Init(500-1,84-1);
 }
 
