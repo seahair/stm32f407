@@ -21,7 +21,7 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);  //enable RCC of Time3
 
-	TIM_TimeBaseInitStructure.TIM_Period = arr; 
+	TIM_TimeBaseInitStructure.TIM_Period = arr;   //Tout= ((arr+1)*(psc+1))/Tclk
 	TIM_TimeBaseInitStructure.TIM_Prescaler=psc;
 	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; 
 	TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1;
@@ -36,9 +36,13 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	
+	Time3Enable();
 }
 
+void Tim3Init_ms( u16 t )
+{
+	TIM3_Int_Init( (t*10-1), (8400-1) );
+}
 
 void TIM3_IRQHandler(void)
 {

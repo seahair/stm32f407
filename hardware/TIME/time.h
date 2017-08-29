@@ -4,6 +4,7 @@
 #include "stm32f4xx_tim.h"
 
 void TIM3_Int_Init(u16 arr,u16 psc);
+void Tim3Init_ms( u16 t );
 void Time3Enable( void );
 void Time3Disable( void );
 

@@ -49,5 +49,6 @@ void HardInit( void )
 	KEY_Init();
 	EXTIX_Init();
 	TIM3_Int_Init(5000-1,8400-1);
+	//Tim3Init_ms( 1000 );
 }
 
