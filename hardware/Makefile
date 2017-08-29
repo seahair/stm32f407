@@ -12,6 +12,8 @@ TEST += BEEP
 TEST += KEY
 TEST += USART
 TEST += EXTI
+TEST += TIME
+
 
 .PHONY: all
 all: $(TEST)
@@ -32,6 +34,9 @@ USART:
 
 EXTI:
 	make -C EXTI
+
+TIME:
+	make -C TIME
 
 $(OBJS): | $(BUILD_DIR)
 

@@ -7,7 +7,7 @@
 
 void LED_Init( void );
 
-#if 1
+
 #define LedRed    GPIO_Pin_9
 #define LedGreen  GPIO_Pin_10
 
@@ -30,6 +30,7 @@ void LedON( u16 pin );
 void LedOFF( u16 pin );
 void LedBlink( u16 pin );
 u8   GetLedStatus( u16 pin );
-#endif
+void LedRollBack( u16 pin );
+
 
 #endif

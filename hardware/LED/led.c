@@ -20,7 +20,6 @@ void LED_Init(void)
 
 }
 
-#if 1
 
 void LedInit( u16 pin )
 {
@@ -59,4 +58,9 @@ u8 GetLedStatus( u16 pin )
 	return GPIO_ReadOutputDataBit(GPIOF, pin);
 }
 
-#endif
+void LedRollBack( u16 pin )
+{
+	(GetLedStatus(pin) == LedStatus_ON)? LedOFF(pin) : LedON(pin) ;
+}
+
+

@@ -8,6 +8,7 @@
 #include "key.h"
 #include "delay.h"
 #include "exti.h"
+#include "time.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 		
 //		KeyTest();
 		LedBlink( LedRed );
-
+		
 		printf ("hello world\r\n");
 		//BeepAlarm( 500 );
 
@@ -47,5 +48,6 @@ void HardInit( void )
 	uart_init(115200);
 	KEY_Init();
 	EXTIX_Init();
+	TIM3_Int_Init(5000-1,8400-1);
 }
 

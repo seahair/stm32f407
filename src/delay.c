@@ -9,8 +9,8 @@ static u16 fac_ms=0;
 void delay_init(u8 SYSCLK)
 {
  	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8); 
-	fac_us=SYSCLK/8;				
 
+	fac_us=SYSCLK/8;				
 	fac_ms=(u16)fac_us*1000;		
 
 }								    
