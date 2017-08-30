@@ -60,6 +60,7 @@ INCLUDE+=-I$(TOP)/hardware/KEY
 INCLUDE+=-I$(TOP)/hardware/EXTI
 INCLUDE+=-I$(TOP)/hardware/TIME
 INCLUDE+=-I$(TOP)/hardware/PWM
+INCLUDE+=-I$(TOP)/hardware/CAPTURE
 
 
 
@@ -88,7 +89,7 @@ COMMONFLAGS+=-O3
 CFLAGS += -D RELEASE_PUBLIC
 InfoTextSrc=src (full optimize and readout protected, -O4)
 endif
-CFLAGS+=$(COMMONFLAGS) -Wall -Werror $(INCLUDE)
+CFLAGS+=$(COMMONFLAGS) -Wall  $(INCLUDE) #-Werror
 CFLAGS+=-D $(TypeOfMCU)
 CFLAGS+=-D VECT_TAB_FLASH
 #Commands for libs Makefile

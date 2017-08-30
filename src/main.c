@@ -10,6 +10,7 @@
 #include "exti.h"
 #include "time.h"
 #include "pwm.h"
+#include "capture.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,23 +19,20 @@ void HardInit( void );
 int main(int argc, char *argv[])
 {
 	HardInit();
-	u16 led0pwmval=0; 
-	u8 dir=1;
+
 	while(1)
 	{
 		delay_ms(10);
-		if(dir)led0pwmval++;//dir==1 led0pwmval 递增
-		else led0pwmval--; //dir==0 led0pwmval 递减
-		if(led0pwmval>300)dir=0;//led0pwmval 到达 300 后，方向为递减
-		if(led0pwmval==0)dir=1; //led0pwmval 递减到 0 后，方向改为递增
-		Time4PwnSetDuty( led0pwmval ); //修改比较值，修改占空比
 
+		PwmTest();
+		//PwmTestDuty();
+		//KeyTest();
+	    //LedBlink( LedRed );
 		
-//		KeyTest();
-	 //	LedBlink( LedRed );
-		
-		printf ("hello world\r\n");
+		//printf ("hello world\r\n");
 		//BeepAlarm( 500 );
+
+		//printf("HIGH:%lld us\r\n", Time5CalcCaptureTime() );//打印总的高点平时间
 
 	}
 }
@@ -49,9 +47,12 @@ void HardInit( void )
 	BEEP_Init();
 	uart_init(115200);
 	KEY_Init();
-	EXTIX_Init();
+//	EXTIX_Init();
 //	TIM3_Int_Init(5000-1,8400-1);
 //	Tim3Init_ms( 1000 );
 	TIM14_PWM_Init(500-1,84-1);
+//	Time4PwmInit_HZ( 2000 );
+//	TIM5_CH1_Cap_Init(0XFFFFFFFF,84-1);
 }
+
 

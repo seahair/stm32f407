@@ -14,6 +14,8 @@ TEST += USART
 TEST += EXTI
 TEST += TIME
 TEST += PWM
+TEST += CAPTURE
+
 
 .PHONY: all
 all: $(TEST)
@@ -40,6 +42,9 @@ TIME:
 
 PWM:
 	make -C PWM
+
+CAPTURE:
+	make -C CAPTURE
 
 $(OBJS): | $(BUILD_DIR)
 
