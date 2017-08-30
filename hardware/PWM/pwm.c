@@ -47,41 +47,41 @@ void TIM14_PWM_Init(u32 arr,u32 psc)
 										  
 }  
 
-void Time4PwmInit_HZ( u32 hz )
+void Time14PwmInit_HZ( u32 hz )
 {
 	TIM14_PWM_Init(1000000/hz-1, 84-1);
 }
 
-void Time4PwmSetDuty( u16 duty )
+void Time14PwmSetDuty( u16 duty )
 {
 	TIM_SetCompare1(PWMTIME, duty);
 }
 
-void Time4PwmDutyIncrease( u16 step )
+void Time14PwmDutyIncrease( u16 step )
 {
 	if( step < PWMCYCLE )
-		Time4PwmSetDuty( (TIM_GetCapture1(PWMTIME)+step)%PWMCYCLE ) ;
+		Time14PwmSetDuty( (TIM_GetCapture1(PWMTIME)+step)%PWMCYCLE ) ;
 }
 
-void Time4PwmDutyDecrease( u16 step )
+void Time14PwmDutyDecrease( u16 step )
 {
 	if( step<PWMCYCLE && step< TIM_GetCapture1(PWMTIME) )
-		Time4PwmSetDuty( TIM_GetCapture1(PWMTIME) - step ) ;
+		Time14PwmSetDuty( TIM_GetCapture1(PWMTIME) - step ) ;
 }
 
 void PwmTest( void )
 {
-	u16 led0pwmval=0;
-	u8 dir=1;
+	static u16 led0pwmval=0;
+	static u8 dir=1;
 	if(dir)led0pwmval++;//dir==1 led0pwmval 递增
 	else led0pwmval--; //dir==0 led0pwmval 递减
 	if(led0pwmval>300)dir=0;//led0pwmval 到达 300 后，方向为递减
 	if(led0pwmval==0)dir=1; //led0pwmval 递减到 0 后，方向改为递增
-	Time4PwmSetDuty( led0pwmval ); //修改比较值，修改占空
+	Time14PwmSetDuty( led0pwmval ); //修改比较值，修改占空
 }
 
 void PwmTestDuty( void )
 {
-	Time4PwmDutyIncrease( 2 );
+	Time14PwmDutyIncrease( 2 );
 }
 

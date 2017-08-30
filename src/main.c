@@ -19,20 +19,34 @@ void HardInit( void );
 int main(int argc, char *argv[])
 {
 	HardInit();
-
+	//u8 i=0;
+	long long temp = 0;
 	while(1)
 	{
 		delay_ms(10);
 
-		PwmTest();
+		//PwmTest();
 		//PwmTestDuty();
 		//KeyTest();
 	    //LedBlink( LedRed );
 		
-		//printf ("hello world\r\n");
+		//	printf ("hello world\r\n");
+		//printf(" num is : %d \r\n", i++ );
 		//BeepAlarm( 500 );
 
 		//printf("HIGH:%lld us\r\n", Time5CalcCaptureTime() );//打印总的高点平时间
+	
+			
+		
+ 		if(TIM5CH1_CAPTURE_STA&0X80)        //³É¹Š²¶»ñµœÁËÒ»ŽÎžßµçÆœ
+		{
+			temp=TIM5CH1_CAPTURE_STA&0X3F; 
+			temp*=0XFFFFFFFF;		 		         //Òç³öÊ±Œä×ÜºÍ
+			temp+=TIM5CH1_CAPTURE_VAL;		   //µÃµœ×ÜµÄžßµçÆœÊ±Œä
+			printf("HIGH:%lld us\r\n",temp); //ŽòÓ¡×ÜµÄžßµãÆœÊ±Œä
+			TIM5CH1_CAPTURE_STA=0;			     //¿ªÆôÏÂÒ»ŽÎ²¶»ñ
+		}
+		
 
 	}
 }
@@ -50,9 +64,9 @@ void HardInit( void )
 //	EXTIX_Init();
 //	TIM3_Int_Init(5000-1,8400-1);
 //	Tim3Init_ms( 1000 );
-	TIM14_PWM_Init(500-1,84-1);
-//	Time4PwmInit_HZ( 2000 );
-//	TIM5_CH1_Cap_Init(0XFFFFFFFF,84-1);
+//	TIM14_PWM_Init(500-1,84-1);
+//	Time14PwmInit_HZ( 2000 );
+	TIM5_CH1_Cap_Init(0XFFFFFFFF,84-1);
 }
 
 
