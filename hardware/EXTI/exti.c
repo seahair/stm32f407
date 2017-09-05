@@ -8,6 +8,7 @@
 #include "stm32f4xx_rcc.h"
 #include "usart.h"
 
+static u32 GlobleKey = 0;
 //PullUP pin Use extIntrupter not very Good
 void EXTI0_IRQHandler(void)
 {
@@ -15,10 +16,21 @@ void EXTI0_IRQHandler(void)
 	if(GetKEYWKUPStatus() == KEY_WK_UP_PRESS)	 
 	{
 		//	while( GetKEYWKUPStatus() != KEY_WK_UP_RELEASE );
-		if( GetLedStatus( LedGreen ) == LedStatus_OFF )
+		/*if( GetLedStatus( LedGreen ) == LedStatus_OFF )
 			LedON( LedGreen );
 		else
+			LedOFF( LedGreen );*/
+		if( (GlobleKey&0X01) == 0 )
+		{
+			GlobleKey = 1;
+			LedON( LedGreen );
+		}
+		else
+		{
+			GlobleKey = 0;
 			LedOFF( LedGreen );
+		}
+
 		printf ("WK_UP  PRESS\r\n");
 		delay_ms(100);	//Ïû¶¶
 	}

@@ -24,7 +24,7 @@ all: libs src hardware
 	arm-none-eabi-objdump -S $(PROGRAM).elf > $(PROGRAM).info_code
 	arm-none-eabi-nm -t x -S --numeric-sort -s $(PROGRAM).elf > $(PROGRAM).info_symbol
 
-.PHONY: libs src hardware clean tshow
+.PHONY: libs src hardware clean tshow gdb
 
 libs:
 	$(MAKE) -C libs $@
@@ -50,4 +50,7 @@ flash: all
 	./do_flash.pl $(TOP)/main.bin
 
 update:
-	openocd -f /usr/share/openocd/scripts/interface/jlink.cfg  -f /usr/share/openocd/scripts/target/stm32f4x.cfg -c init -c halt -c "flash write_image erase /home/sea/gitworkspace/stm32f407/main.hex" -c reset -c  shutdown
+	openocd -f /usr/share/openocd/scripts/interface/jlink.cfg  -f /usr/share/openocd/scripts/target/stm32f4x.cfg -c init -c halt -c "flash write_image erase /home/sea/gitworkspace/stm32f407/main.hex" #-c reset -c  shutdown
+
+gdb:
+	$(GDB) -iex "target remote localhost:3333" -iex 'monitor reset' -iex 'monitor halt' -iex 'load main.elf' -iex 'b main.c:main'  main.elf
