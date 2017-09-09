@@ -15,6 +15,7 @@ TEST += EXTI
 TEST += TIME
 TEST += PWM
 TEST += CAPTURE
+TEST += PAD
 
 
 .PHONY: all
@@ -45,6 +46,9 @@ PWM:
 
 CAPTURE:
 	make -C CAPTURE
+
+PAD:
+	make -C PAD
 
 $(OBJS): | $(BUILD_DIR)
 
