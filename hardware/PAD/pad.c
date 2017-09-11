@@ -7,6 +7,7 @@
 
 #define TPAD_ARR_MAX_VAL	0XFFFFFFFF
 u16 PadDefaultValue = 0;
+#define PADGATEWALL		100
 
 void PadOutPutInit( void )
 {
@@ -146,9 +147,18 @@ u16 PadGetMaxValue( u8 num )
 	return res;
 }
 
-u8 PadScan( void )
+u8 PadScan( u8 mode )
 {
-
+	u8 sample=3;
+	u16 res;
+	if( mode == 0 )
+	{
+		res = PadGetMaxValue( sample );
+		if( res > (PadDefaultValue+PADGATEWALL) )
+			return PADPULLDOWN;
+		else
+			return PADPULLUP;
+	}
 }
 
 
