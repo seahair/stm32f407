@@ -30,15 +30,22 @@ int main(int argc, char *argv[])
 		delay_ms(10);
 
 		//PwmTest();
-		PwmTestDuty();
+		//PwmTestDuty();
 		//KeyTest();
-	    //LedBlink( LedRed );
-		
+	    	LedBlink( LedRed );
+		if( PadScan(0 ) )
+		{
+			LedON( LedGreen );
+			delay_ms( 500 );
+		}
+		else
+			LedON( LedGreen );
+
 		//	printf ("hello world\r\n");
 		//BeepAlarm( 500 );
 
 		//printf("HIGH:%lld us\r\n", Time5CalcCaptureTime() );//打印总的高点平时间
-		Time5CalcCaptureTime( );
+		//Time5CalcCaptureTime( );
 			
 		
  		/*if(TIM5CH1_CAPTURE_STA&0X80)        //³É¹Š²¶»ñµœÁËÒ»ŽÎžßµçÆœ
@@ -68,8 +75,8 @@ void HardInit( void )
 //	TIM3_Int_Init(5000-1,8400-1);
 //	Tim3Init_ms( 1000 );
 //	TIM14_PWM_Init(500-1,84-1);
-	Time14PwmInit_HZ( 2000 );
-	TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1);
+	//Time14PwmInit_HZ( 2000 );
+	//TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1);
 	PadInit( 8 );
 }
 

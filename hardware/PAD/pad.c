@@ -109,7 +109,7 @@ void PadInit( u8 psc )
 		delay_ms( 10 );
 	}
 
-	for(i=0; i<9; j++)
+	for(i=0; i<9; i++)
 	{
 		for(j=i+1; j<10; j++)
 		{
