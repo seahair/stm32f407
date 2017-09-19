@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pad.h"
+#include "sram.h"
+
 
 void HardInit( void );
 
@@ -69,15 +71,16 @@ void HardInit( void )
 	LedInit( LedRed );
 	LedInit( LedGreen );	
 //	BEEP_Init();
-	uart_init(115200);
+	uart_init( 115200 );
 //	KEY_Init();
 //	EXTIX_Init();
 //	TIM3_Int_Init(5000-1,8400-1);
 //	Tim3Init_ms( 1000 );
 //	TIM14_PWM_Init(500-1,84-1);
-	//Time14PwmInit_HZ( 2000 );
-	//TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1);
+//	Time14PwmInit_HZ( 2000 );
+//	TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1);
 	PadInit( 8 );
+	FSMC_SRAM_Init( );
 }
 
 

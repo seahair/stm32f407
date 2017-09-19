@@ -16,6 +16,7 @@ TEST += TIME
 TEST += PWM
 TEST += CAPTURE
 TEST += PAD
+TEST += SRAM
 
 
 .PHONY: $(TEST)
@@ -50,6 +51,10 @@ CAPTURE:
 
 PAD:
 	make -C PAD
+
+SRAM:
+	make -C SRAM
+
 #END
 $(OBJS): | $(BUILD_DIR)
 
