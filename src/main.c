@@ -16,7 +16,7 @@
 #include "pad.h"
 #include "sram.h"
 
-
+u32 SramTest[250000] __attribute__((at(0x68000000)));
 void HardInit( void );
 
 //u8 TIM5CH1_CAPTURE_STA=1;  
@@ -35,13 +35,14 @@ int main(int argc, char *argv[])
 		//PwmTestDuty();
 		//KeyTest();
 	    	LedBlink( LedRed );
-		if( PadScan(0 ) )
+		SramTest[ 5 ] = 0x4455;
+	/*	if( PadScan(0 ) )
 		{
 			LedON( LedGreen );
 			delay_ms( 500 );
 		}
 		else
-			LedON( LedGreen );
+			LedON( LedGreen );*/
 
 		//	printf ("hello world\r\n");
 		//BeepAlarm( 500 );
@@ -79,7 +80,7 @@ void HardInit( void )
 //	TIM14_PWM_Init(500-1,84-1);
 //	Time14PwmInit_HZ( 2000 );
 //	TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1);
-	PadInit( 8 );
+//	PadInit( 8 );
 	FSMC_SRAM_Init( );
 }
 
