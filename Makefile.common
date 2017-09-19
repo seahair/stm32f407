@@ -62,6 +62,7 @@ INCLUDE+=-I$(TOP)/hardware/TIME
 INCLUDE+=-I$(TOP)/hardware/PWM
 INCLUDE+=-I$(TOP)/hardware/CAPTURE
 INCLUDE+=-I$(TOP)/hardware/PAD
+INCLUDE+=-I$(TOP)/hardware/SRAM
 
 
 

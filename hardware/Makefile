@@ -18,11 +18,12 @@ TEST += CAPTURE
 TEST += PAD
 
 
+.PHONY: $(TEST)
 .PHONY: all
 all: $(TEST)
 	$(AR) -cvq $(LIB_A) $(OBJS)
 
-.PHONY: $(TEST)
+#:<<END
 LED:
 	make -C LED
 
@@ -49,7 +50,7 @@ CAPTURE:
 
 PAD:
 	make -C PAD
-
+#END
 $(OBJS): | $(BUILD_DIR)
 
 .PHONY: clean
