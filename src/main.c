@@ -16,7 +16,8 @@
 #include "pad.h"
 #include "sram.h"
 
-u32 SramTest[250000] __attribute__((at(0x68000000)));
+//u32 SramTest[25000] __attribute__((at(0x68000000)));
+u32 SramTest[25000] __attribute__( (used, __section__("glx"))) ;
 void HardInit( void );
 
 //u8 TIM5CH1_CAPTURE_STA=1;  
@@ -24,6 +25,7 @@ void HardInit( void );
 
 int main(int argc, char *argv[])
 {
+	u8 i=0;
 	HardInit();
 	//u8 i=0;
 	long long temp = 0;
@@ -35,7 +37,10 @@ int main(int argc, char *argv[])
 		//PwmTestDuty();
 		//KeyTest();
 	    	LedBlink( LedRed );
-		SramTest[ 5 ] = 0x4455;
+		SramTest[ i+5 ] = 0x4455 + i;
+		printf("SramTest is %x \r\n", SramTest[i+5]);
+		printf("SramTest addr is %x \r\n", &SramTest[i+5]);
+		i++;
 	/*	if( PadScan(0 ) )
 		{
 			LedON( LedGreen );
