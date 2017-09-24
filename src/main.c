@@ -17,7 +17,7 @@
 #include "sram.h"
 
 //u32 SramTest[25000] __attribute__((at(0x68000000)));
-u32 SramTest[25000] __attribute__( (used, __section__("glx"))) ;
+u32 SramTest[250000] __attribute__( (__section__(".glx"))) ;
 void HardInit( void );
 
 //u8 TIM5CH1_CAPTURE_STA=1;  
