@@ -63,6 +63,7 @@ INCLUDE+=-I$(TOP)/hardware/PWM
 INCLUDE+=-I$(TOP)/hardware/CAPTURE
 INCLUDE+=-I$(TOP)/hardware/PAD
 INCLUDE+=-I$(TOP)/hardware/SRAM
+INCLUDE+=-I$(TOP)/hardware/MALLOC
 
 
 
@@ -91,7 +92,7 @@ CFLAGS += -D RELEASE_PUBLIC
 InfoTextSrc=src (full optimize and readout protected, -O0)
 endif
 
-CFLAGS+=$(COMMONFLAGS) -Wall  $(INCLUDE)  #-Werror
+CFLAGS+=$(COMMONFLAGS) -Wall $(INCLUDE)  #-Werror
 CFLAGS+=-D $(TypeOfMCU)
 CFLAGS+=-D VECT_TAB_FLASH
 CFLAGS+=-D USE_STDPERIPH_DRIVER

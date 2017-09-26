@@ -17,6 +17,7 @@ TEST += PWM
 TEST += CAPTURE
 TEST += PAD
 TEST += SRAM
+TEST += MALLOC 
 
 
 .PHONY: $(TEST)
@@ -55,6 +56,10 @@ PAD:
 SRAM:
 	make -C SRAM
 
+MALLOC:
+	make -C MALLOC
+
+#END
 #END
 $(OBJS): | $(BUILD_DIR)
 

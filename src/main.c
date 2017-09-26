@@ -15,9 +15,10 @@
 #include <stdlib.h>
 #include "pad.h"
 #include "sram.h"
+#include "malloc.h"
 
 //u32 SramTest[25000] __attribute__((at(0x68000000)));
-u32 SramTest[250000] __attribute__( (__section__(".glx"))) ;
+//u32 SramTest[250000] __attribute__( (__section__(".glx"))) ;
 void HardInit( void );
 
 //u8 TIM5CH1_CAPTURE_STA=1;  
@@ -37,9 +38,13 @@ int main(int argc, char *argv[])
 		//PwmTestDuty();
 		//KeyTest();
 	    	LedBlink( LedRed );
-		SramTest[ i+5 ] = 0x4455 + i;
-		printf("SramTest is %x \r\n", SramTest[i+5]);
-		printf("SramTest addr is %x \r\n", &SramTest[i+5]);
+		u8 *p = mymalloc(1, 32);	
+		if(p == 0 )
+			printf(" mymalloc error \r\n");
+		
+		//SramTest[ i+5 ] = 0x4455 + i;
+		printf("SramTest is %x \r\n", *(p+i));
+		printf("SramTest addr is %x \r\n",p+i); 
 		i++;
 	/*	if( PadScan(0 ) )
 		{
